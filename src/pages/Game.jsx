@@ -1,8 +1,17 @@
+import Board from "../components/Board/Board.jsx";
+import Button from "../components/Button/Button.jsx";
+import {useNavigate} from "react-router-dom";
 
 function Game() {
+    const navigate = useNavigate();
+
     return (
         <>
-            <h1>Aqui va el juego</h1>
+            <div style={{textAlign: "center", display: "flex", flexDirection: "column", gap:"2em"}}>
+                <h1 style={{margin: 0}}>Tablero</h1>
+                <Board />
+                <Button text='Volver' onClick={() => navigate('/home')} />
+            </div>
         </>
     );
 }

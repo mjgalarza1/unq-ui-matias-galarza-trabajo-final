@@ -6,7 +6,7 @@ function Home() {
 
     return (
         <>
-            <h1>Memotest</h1>
+            <h1>Bird Memotest</h1>
             <div className="main-menu-buttons">
                 <Button text={"Un Jugador"} onClick={() => navigate('/game')}/>
                 {/*<Button text={"Two Players"} onClick={() => navigate("/twoplayers")}/>*/}

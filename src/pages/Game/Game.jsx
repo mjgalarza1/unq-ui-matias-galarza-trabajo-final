@@ -1,5 +1,5 @@
-import Board from "../components/Board/Board.jsx";
-import Button from "../components/Button/Button.jsx";
+import Board from "../../components/Board/Board.jsx";
+import Button from "../../components/Button/Button.jsx";
 import {useNavigate} from "react-router-dom";
 
 function Game() {

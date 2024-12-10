@@ -1,9 +1,9 @@
 import "./App.css"
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-import Home from "./pages/Home.jsx";
-import Game from "./pages/Game.jsx";
-import Rules from "./pages/Rules.jsx";
+import Home from "./pages/Home/Home.jsx";
+import Game from "./pages/Game/Game.jsx";
+import Rules from "./pages/Rules/Rules.jsx";
 
 function App() {
     return (

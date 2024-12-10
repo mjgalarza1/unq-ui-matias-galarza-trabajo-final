@@ -47,7 +47,8 @@ function Board() {
 
         if (selectedMemoCard == null) {
             setSelectedMemoCard(memoCard);
-        } else if (selectedMemoCard.name === memoCard.name) {
+        }
+        else if (selectedMemoCard.name === memoCard.name) {
             setCombo(combo + 1);
             const pointsPlusCombo = 100 + combo * 50;
             setScore(score + pointsPlusCombo);
@@ -56,7 +57,8 @@ function Board() {
             if (allFlipped) {
                 setGameOver(true);
             }
-        } else {
+        }
+        else {
             setCombo(0);
             setAnimating(true);
             setTimeout(() => {

@@ -8,9 +8,9 @@ function Game() {
     return (
         <>
             <div style={{textAlign: "center", display: "flex", flexDirection: "column", gap:"2em"}}>
-                <h1 style={{margin: 0}}>Tablero</h1>
+                <h1 style={{margin: 0}}>¡Descubre las aves!</h1>
                 <Board />
-                <Button text='Volver' onClick={() => navigate('/home')} />
+                <Button text='Volver al menú' onClick={() => navigate('/home')} />
             </div>
         </>
     );

@@ -6,7 +6,10 @@ function Home() {
 
     return (
         <>
-            <h1>Bird Memotest</h1>
+            <div className="d-flex flex-column align-items-center mb-2">
+                <h1>~MemoBird~</h1>
+                <p>Un juego de memoria con aves</p>
+            </div>
             <div className="main-menu-buttons">
                 <Button text={"Un Jugador"} onClick={() => navigate('/game')}/>
                 {/*<Button text={"Two Players"} onClick={() => navigate("/twoplayers")}/>*/}

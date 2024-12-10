@@ -76,6 +76,7 @@ function Board() {
                         animating={animating}
                         handleMemoCardClick={handleMemoCardClick}
                         memoCard={{...bird, index}}
+                        style={{ animationDelay: `${index * 0.1}s` }}
                     />
                 ))}
             </div>

@@ -1,0 +1,16 @@
+.modal-header, .modal-footer {
+    justify-content: center;
+}
+
+.modal-footer-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.modal-title, .modal-body p, .modal-body h1 {
+    color: #1a1a1a;
+    text-align: center;
+    margin: 0.5em;
+}

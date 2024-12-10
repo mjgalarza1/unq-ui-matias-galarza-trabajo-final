@@ -13,6 +13,13 @@ body {
     margin: 0;
 }
 
-.score-and-combo-container h2, h3 {
+.score-and-combo-container h2, .score-and-combo-container h3 {
     margin: 4px;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }

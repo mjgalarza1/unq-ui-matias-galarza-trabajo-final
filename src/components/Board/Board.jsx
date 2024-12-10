@@ -1,10 +1,12 @@
 import "./Board.css"
 import { useEffect, useState } from 'react';
 import MemoCard from "../MemoCard/MemoCard.jsx";
-import birds from "../../assets/images/birds/birds.jsx";
+import {sortBirds} from "../../util/sortBirds.jsx";
 import GameOverModal from "../Modal/GameOverModal.jsx";
+import {useParams} from "react-router-dom";
 
 function Board() {
+    const {difficulty} = useParams();
 
     const [shuffledMemoCards, setShuffledMemoCards] = useState([]);
     const [selectedMemoCard, setSelectedMemoCard] = useState(null);
@@ -14,14 +16,24 @@ function Board() {
     const [gameOver, setGameOver] = useState(false);
 
     useEffect(() => {
-        initializeGame();
+        const shuffledImages = sortBirds(difficulty);
+        setShuffledMemoCards(shuffledImages.map((bird, index) => ({ ...bird, flipped: false, index })));
+        handleStates();
     }, []);
 
-    const initializeGame = () => {
-        const selectedImages = birds.sort(() => Math.random() - 0.5).slice(0, 8);
-        const duplicatedImages = [...selectedImages, ...selectedImages];
-        const shuffledImages = duplicatedImages.sort(() => Math.random() - 0.5);
-        setShuffledMemoCards(shuffledImages.map((bird, index) => ({ ...bird, flipped: false, index })));
+    const resetGame = () => {
+        handleStates()
+        setShuffledMemoCards(prevCards =>
+            prevCards.map(card => ({ ...card, flipped: false }))
+        );
+
+        setTimeout(() => {
+            const shuffledImages = sortBirds(difficulty);
+            setShuffledMemoCards(shuffledImages.map((bird, index) => ({ ...bird, flipped: false, index })));
+        }, 500);
+    };
+
+    const handleStates = () => {
         setCombo(0);
         setGameOver(false);
         setSelectedMemoCard(null);
@@ -34,10 +46,8 @@ function Board() {
         setShuffledMemoCards(shuffledMemoCardsCopy);
 
         if (selectedMemoCard == null) {
-            console.log("La carta ", memoCard.name, " fue seleccionada")
             setSelectedMemoCard(memoCard);
         } else if (selectedMemoCard.name === memoCard.name) {
-            console.log("Las cartas ", selectedMemoCard.name, " y ", memoCard.name, " son iguales")
             setCombo(combo + 1);
             const pointsPlusCombo = 100 + combo * 50;
             setScore(score + pointsPlusCombo);
@@ -47,7 +57,6 @@ function Board() {
                 setGameOver(true);
             }
         } else {
-            console.log("Las cartas ", selectedMemoCard.name, " y ", memoCard.name, " NO SON IGUALES")
             setCombo(0);
             setAnimating(true);
             setTimeout(() => {
@@ -58,17 +67,23 @@ function Board() {
                 setAnimating(false);
             }, 1000);
         }
+    };
+
+    let numColumns;
+    if (difficulty === "4x4") {
+        numColumns = 4;
+    } else if (difficulty === "6x4" || difficulty === "6x6") {
+        numColumns = 6;
     }
 
     return (
         <div className="board-container">
             <GameOverModal
                 isVisible={gameOver}
-                onReplay={initializeGame}
+                onReplay={resetGame}
                 score={score}
             />
-
-            <div className="board">
+            <div className="board" style={{ gridTemplateColumns: `repeat(${numColumns}, 1fr)` }}>
                 {shuffledMemoCards.map((bird, index) => (
                     <MemoCard
                         key={index}

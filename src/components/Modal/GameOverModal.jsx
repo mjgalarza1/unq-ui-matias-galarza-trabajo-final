@@ -22,7 +22,7 @@ function GameOverModal({ isVisible, onReplay, score }) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>Tu puntaje final fue:</p>
+                <p>Tu puntaje es:</p>
                 <h1>¡{score}!</h1>
             </Modal.Body>
             <Modal.Footer>

@@ -1,8 +1,16 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# MemoTest
+## ¿Como descargar e instalar la aplicación?
+Para descargar la aplicación se tiene que clonar el repositorio. Para ello, copiar el siguiente comando en consola
+```
+git clone https://github.com/mjgalarza1/unq-ui-matias-galarza-trabajo-final.git
+```
+Para instalar, ubicarse en la carpeta raíz del proyecto y ejecutar el siguiente comando
+```
+npm install
+```
+## ¿Cómo ejecutar la aplicación?
+Para ejecutar la aplicación, se debe ejecutar el siguiente comando en la misma ubicación que el anterior
+```
+npm start
+```
+La aplicación se levantará de manera local en http://localhost:5173

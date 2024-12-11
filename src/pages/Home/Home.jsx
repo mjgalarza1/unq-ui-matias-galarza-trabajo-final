@@ -10,6 +10,7 @@ function Home() {
     const navigate = useNavigate();
 
     const [difficultyValue, setDifficultyValue] = useState('4x4');
+    const [players, setPlayers] = useState(1);
 
     const handleDifficulty = (optionSelected) => {
         setDifficultyValue(optionSelected);
@@ -34,14 +35,18 @@ function Home() {
 
                         <div className="game-option">
                             <h5 className="m-0">Jugadores</h5>
-                            <Form.Select defaultValue="1" className="players-select">
+                            <Form.Select
+                                value={players}
+                                onChange={(e) => setPlayers(e.target.value)}
+                                className="players-select"
+                            >
                                 <option value="1">Un jugador</option>
                                 <option value="2">Dos jugadores</option>
                             </Form.Select>
                         </div>
 
                         <div className="main-menu-buttons">
-                            <Button text={"Empezar partida"} onClick={() => navigate(`/game/${difficultyValue}`)}/>
+                            <Button text={"Empezar partida"} onClick={() => navigate(`/game/${difficultyValue}/${players}`)}/>
                         </div>
                     </div>
                 </div>

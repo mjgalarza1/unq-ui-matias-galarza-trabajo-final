@@ -6,14 +6,17 @@ import GameOverModal from "../Modal/GameOverModal.jsx";
 import {useParams} from "react-router-dom";
 
 function Board() {
-    const {difficulty} = useParams();
+    const {difficulty, players} = useParams();
 
     const [shuffledMemoCards, setShuffledMemoCards] = useState([]);
     const [selectedMemoCard, setSelectedMemoCard] = useState(null);
     const [animating, setAnimating] = useState(false);
-    const [score, setScore] = useState(0);
     const [combo, setCombo] = useState(0);
     const [gameOver, setGameOver] = useState(false);
+
+    const [playerTurn, setPlayerTurn] = useState(1);
+    const [player1Score, setPlayer1Score] = useState(0);
+    const [player2Score, setPlayer2Score] = useState(0);
 
     useEffect(() => {
         const shuffledImages = sortBirds(difficulty);
@@ -31,6 +34,11 @@ function Board() {
             const shuffledImages = sortBirds(difficulty);
             setShuffledMemoCards(shuffledImages.map((bird, index) => ({ ...bird, flipped: false, index })));
         }, 500);
+
+        if (players === "2") {
+            setPlayer1Score(0)
+            setPlayer2Score(0)
+        }
     };
 
     const handleStates = () => {
@@ -51,7 +59,13 @@ function Board() {
         else if (selectedMemoCard.name === memoCard.name) {
             setCombo(combo + 1);
             const pointsPlusCombo = 100 + combo * 50;
-            setScore(score + pointsPlusCombo);
+
+            if (playerTurn === 1) {
+                setPlayer1Score(player1Score + pointsPlusCombo);
+            } else {
+                setPlayer2Score(player2Score + pointsPlusCombo);
+            }
+
             setSelectedMemoCard(null);
             const allFlipped = shuffledMemoCardsCopy.every(card => card.flipped);
             if (allFlipped) {
@@ -67,9 +81,14 @@ function Board() {
                 setShuffledMemoCards(shuffledMemoCardsCopy);
                 setSelectedMemoCard(null);
                 setAnimating(false);
+
+                if (players === "2") {
+                    setPlayerTurn(playerTurn === 1 ? 2 : 1);
+                }
             }, 1000);
         }
     };
+
 
     let numColumns;
     if (difficulty === "4x4") {
@@ -83,7 +102,8 @@ function Board() {
             <GameOverModal
                 isVisible={gameOver}
                 onReplay={resetGame}
-                score={score}
+                player1Score={player1Score}
+                player2Score={player2Score}
             />
             <div className="board" style={{ gridTemplateColumns: `repeat(${numColumns}, 1fr)` }}>
                 {shuffledMemoCards.map((bird, index) => (
@@ -98,9 +118,17 @@ function Board() {
                 ))}
             </div>
             <div className="score-and-combo-container">
-                <h2>Puntaje: {score}</h2>
-                <p className="mb-0 fst-italic">( Combo: x{combo} )</p>
+                {players === "1"
+                    ? <div>
+                        <h3>Puntaje: {player1Score}</h3>
+                        <p className="mb-0 fst-italic">( Combo: x{combo} )</p>
+                    </div>
+                    : <div className="score-multiplayer">
+                        <h3 className={playerTurn === 1 ? "turn-player" : ""}>Jugador 1: {player1Score}</h3>
+                        <h3 className={playerTurn === 2 ? "turn-player" : ""}>Jugador 2: {player2Score}</h3>
+                    </div>}
             </div>
+
         </div>
     );
 }

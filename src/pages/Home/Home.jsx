@@ -17,36 +17,39 @@ function Home() {
 
     return (
         <>
-            <div className="main-menu-container">
+            <div className="main-menu-wrapper">
 
-                <div className="game-title">
-                    <h1>~MemoBird~</h1>
-                    <p>Un juego de memoria con aves</p>
+                <div className="main-menu-container">
+                    <div className="game-title">
+                        <h1>~MemoBird~</h1>
+                        <p className="text-center">Un juego de memoria con aves</p>
+                    </div>
+
+                    <div className="game-options-wrapper">
+                        <div className="game-option">
+                            <h5 className="m-0">Dificultad</h5>
+                            <DifficultyOptions currentDifficultyValue={difficultyValue}
+                                                handleDifficulty={handleDifficulty}/>
+                        </div>
+
+                        <div className="game-option">
+                            <h5 className="m-0">Jugadores</h5>
+                            <Form.Select defaultValue="1" className="players-select">
+                                <option value="1">Un jugador</option>
+                                <option value="2">Dos jugadores</option>
+                            </Form.Select>
+                        </div>
+
+                        <div className="main-menu-buttons">
+                            <Button text={"Empezar partida"} onClick={() => navigate(`/game/${difficultyValue}`)}/>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="game-options-wrapper">
-                    <div className="game-option">
-                        <h5 className="m-0">Dificultad</h5>
-                        <DifficultyOptions currentDifficultyValue={difficultyValue}
-                                           handleDifficulty={handleDifficulty}/>
-                    </div>
-
-                    <div className="game-option">
-                        <h5 className="m-0">Jugadores</h5>
-                        <Form.Select defaultValue="1">
-                            <option value="1">Un jugador</option>
-                            <option value="2">Dos jugadores</option>
-                        </Form.Select>
-                    </div>
-
-                    <div className="main-menu-buttons">
-                        <Button text={"Empezar partida"} onClick={() => navigate(`/game/${difficultyValue}`)}/>
-                    </div>
+                <div className="text-end">
+                    <BootstrapButton variant="link" onClick={() => navigate('/rules')}>Reglas de Juego</BootstrapButton>
                 </div>
 
-            </div>
-            <div className="text-end">
-                <BootstrapButton variant="link" onClick={() => navigate('/rules')}>Reglas de Juego</BootstrapButton>
             </div>
         </>
     );

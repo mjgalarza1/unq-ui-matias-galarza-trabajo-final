@@ -99,7 +99,7 @@ function Board() {
             </div>
             <div className="score-and-combo-container">
                 <h2>Puntaje: {score}</h2>
-                <h3>Combo: x{combo}</h3>
+                <p className="mb-0 fst-italic">( Combo: x{combo} )</p>
             </div>
         </div>
     );

@@ -9,7 +9,7 @@ function Game() {
     return (
         <>
             <div className="game-board-container">
-                <h1 style={{margin: 0}}>¡Descubre las aves!</h1>
+                <h1 className="game-board-title">¡Descubre las aves!</h1>
                 <Board />
                 <Button text='Volver al menú' onClick={() => navigate('/home')} />
             </div>

@@ -4,6 +4,24 @@
     justify-content: center;
     gap: 2em;
     text-align: center;
+    min-height: 150px;
     height: 100vh;
     width: 600px;
+    padding: 1em 1em;
+}
+
+.game-board-title {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .game-board-container {
+        width: 100vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .game-board-title {
+        font-size: 2em;
+    }
 }

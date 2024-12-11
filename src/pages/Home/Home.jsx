@@ -1,4 +1,6 @@
-import Button from "../../components/Button/Button.jsx"
+import Button from "../../components/Button/Button.jsx";
+import { Button as BootstrapButton } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import {useState} from "react";
 import DifficultyOptions from "../../components/DifficultyOptions/DifficultyOptions.jsx";
@@ -31,15 +33,20 @@ function Home() {
 
                     <div className="game-option">
                         <h5 className="m-0">Jugadores</h5>
-                        <p className="text-end mb-0">(aqui iría la seleccion de cantidad de jugadores)</p>
+                        <Form.Select>
+                            <option selected={true} value="1">Un jugador</option>
+                            <option value="2">Dos jugadores</option>
+                        </Form.Select>
                     </div>
 
                     <div className="main-menu-buttons">
-                        <Button text={"Comenzar partida"} onClick={() => navigate(`/game/${difficultyValue}`)}/>
-                        <Button text={"Reglas de Juego"} onClick={() => navigate('/rules')}/>
+                        <Button text={"Empezar partida"} onClick={() => navigate(`/game/${difficultyValue}`)}/>
                     </div>
                 </div>
 
+            </div>
+            <div className="text-end">
+                <BootstrapButton variant="link" onClick={() => navigate('/rules')}>Reglas de Juego</BootstrapButton>
             </div>
         </>
     );

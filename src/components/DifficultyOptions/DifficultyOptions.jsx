@@ -1,4 +1,5 @@
 import {ButtonGroup, ToggleButton} from "react-bootstrap";
+import "./DifficultyOptions.css"
 
 const difficulties = [
     { name: '4x4', value: '4x4' },
@@ -18,6 +19,8 @@ function DifficultyOptions({ currentDifficultyValue, handleDifficulty }) {
                     value={selectedDifficulty.value}
                     checked={currentDifficultyValue === selectedDifficulty.value}
                     onChange={(e) => handleDifficulty(e.currentTarget.value)}
+                    className="toggle-button"
+                    variant="light"
                 >
                     {selectedDifficulty.name}
                 </ToggleButton>

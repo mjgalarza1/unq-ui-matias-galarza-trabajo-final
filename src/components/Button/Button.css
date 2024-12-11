@@ -1,6 +1,5 @@
 .button {
-    min-width: 250px;
-    border: 0;
+    border: none;
 }
 
 .button:hover {

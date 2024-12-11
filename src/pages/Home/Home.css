@@ -32,10 +32,19 @@
 
 .main-menu-buttons {
     display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    padding: 10px 0;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.main-menu-buttons Button {
+    background-color: #219c5f;
+    color: white;
+    font-weight: bold;
+    padding: 16px;
+}
+
+.main-menu-buttons Button:hover {
+    background-color: white;
+    color: black;
 }
 

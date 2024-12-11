@@ -33,8 +33,8 @@ function Home() {
 
                     <div className="game-option">
                         <h5 className="m-0">Jugadores</h5>
-                        <Form.Select>
-                            <option selected={true} value="1">Un jugador</option>
+                        <Form.Select defaultValue="1">
+                            <option value="1">Un jugador</option>
                             <option value="2">Dos jugadores</option>
                         </Form.Select>
                     </div>

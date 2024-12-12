@@ -11,6 +11,6 @@ npm install
 ## ¿Cómo ejecutar la aplicación?
 Para ejecutar la aplicación, se debe ejecutar el siguiente comando en la misma ubicación que el anterior
 ```
-npm start
+npm run dev
 ```
 La aplicación se levantará de manera local en http://localhost:5173

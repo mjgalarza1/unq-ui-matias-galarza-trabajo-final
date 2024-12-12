@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2em;
+    gap: 1em;
     text-align: center;
     min-height: 150px;
     height: 100vh;
@@ -12,6 +12,7 @@
 
 .game-board-title {
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(39, 47, 53, 0.8);
 }
 
 @media (max-width: 600px) {

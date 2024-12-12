@@ -13,33 +13,49 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 0;
+    padding: 0.5em 1em;
     margin-top: 16px;
+    text-shadow: 2px 2px 4px rgba(39, 47, 53, 0.8);
 }
 
 .score-multiplayer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .turn-player {
-    color: green;
+    color: #002aff;
     font-weight: bold;
     transform: scale(1.1);
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 6px;
+    text-shadow: none;
     transition: transform 0.3s ease-in-out;
 }
 
-.score-multiplayer h2 {
+.player-one {
+    border: solid 2px #002aff;
+    color: #002aff;
+}
+
+.player-two {
+    border: solid 2px #fd3434;
+    color: #fd3434;
+}
+
+.score-multiplayer h3 {
     transition: transform 0.3s ease-in-out;
 }
 
-.score-multiplayer h2:not(.turn-player) {
+.score-multiplayer h3:not(.turn-player) {
     transform: scale(1);
 }
 
-.score-and-combo-container h2 {
-    margin: 4px;
+.score-and-combo-container h3 {
+    margin: 0;
 }
 
 .board-container {

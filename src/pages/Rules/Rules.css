@@ -1,0 +1,50 @@
+.rules-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 3em;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../../../public/flock-of-flying-birds.svg");
+    background-repeat: repeat-x;
+    background-size: 80vh;
+    background-position: bottom;
+}
+
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+    margin: 2em;
+    width: 1000px;
+    text-shadow: 2px 2px 4px rgba(39, 47, 53, 0.8);
+}
+
+.rules-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-shadow: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+}
+
+.rules-text {
+    color: #474747;
+    padding-bottom: 16px;
+}
+
+.rules-container Button {
+    height: 4em;
+}
+
+@media (max-width: 1000px) {
+    .rules-container {
+        width: 100vw;
+    }
+}

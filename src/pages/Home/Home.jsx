@@ -36,6 +36,7 @@ function Home() {
                         <div className="game-option">
                             <h5 className="m-0">Jugadores</h5>
                             <Form.Select
+                                id="players-select"
                                 value={players}
                                 onChange={(e) => setPlayers(e.target.value)}
                                 className="players-select"
@@ -51,7 +52,7 @@ function Home() {
                     </div>
                 </div>
 
-                <div className="text-end">
+                <div className="game-rules-button">
                     <BootstrapButton variant="link" onClick={() => navigate('/rules')}>Reglas de Juego</BootstrapButton>
                 </div>
 

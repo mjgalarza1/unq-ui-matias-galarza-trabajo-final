@@ -11,7 +11,7 @@ function Game() {
             <div className="game-board-container">
                 <h1 className="game-board-title">¡Descubre las aves!</h1>
                 <Board />
-                <Button text='Volver al menú' onClick={() => navigate('/home')} />
+                <Button text='Volver al inicio' onClick={() => navigate('/')} />
             </div>
         </>
     );

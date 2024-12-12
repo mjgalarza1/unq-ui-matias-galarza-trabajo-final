@@ -1,13 +1,31 @@
 .main-menu-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px 4px rgba(39, 47, 53, 0.8);
+    background-image: url("../../../public/flock-of-flying-birds.svg");
+    background-repeat: repeat-x;
+    background-size: 80vh;
+    background-position: bottom;
+    width: 100vw;
+    height: 100vh;
 }
 
-.main-menu-container {
+.main-menu-container, .game-rules-button {
     display: flex;
     flex-direction: column;
     gap: 1em;
     width: 600px;
+}
+
+.game-rules-button {
+    align-items: end;
+    margin-right: 10px;
+}
+
+.game-rules-button Button {
+    color: #08409f;
 }
 
 .game-title {
@@ -21,8 +39,9 @@
     flex-direction: column;
     padding: 0.5em 1em;
     margin: 0 0.6em;
-    border: solid 1px #f9f9f9;
+    border: solid 2px #f9f9f9;
     border-radius: 10px;
+    backdrop-filter: blur(8px);
 }
 
 .game-option {
@@ -59,7 +78,7 @@
 }
 
 @media (max-width: 600px) {
-    .main-menu-container {
+    .main-menu-container, .game-rules-button {
         width: 100vw;
     }
 }

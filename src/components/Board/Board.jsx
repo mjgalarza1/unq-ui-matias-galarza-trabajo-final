@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import MemoCard from "../MemoCard/MemoCard.jsx";
 import {sortBirds} from "../../util/sortBirds.jsx";
 import GameOverModal from "../Modal/GameOverModal.jsx";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 function Board() {
+    const navigate = useNavigate();
+
     const {difficulty, players} = useParams();
 
     const [shuffledMemoCards, setShuffledMemoCards] = useState([]);
@@ -17,6 +19,15 @@ function Board() {
     const [playerTurn, setPlayerTurn] = useState(1);
     const [player1Score, setPlayer1Score] = useState(0);
     const [player2Score, setPlayer2Score] = useState(0);
+
+    const validDifficulties = ["4x4", "6x4", "6x6"];
+    const validPlayers = ["1", "2"];
+
+    useEffect(() => {
+        if (!validDifficulties.includes(difficulty) || !validPlayers.includes(players)) {
+            navigate("/not-found", { replace: true });
+        }
+    }, [difficulty, players, navigate]);
 
     useEffect(() => {
         const shuffledImages = sortBirds(difficulty);
@@ -49,13 +60,14 @@ function Board() {
 
     const handleMemoCardClick = (memoCard) => {
         const flippedMemoCard = {...memoCard, flipped: true};
-        let shuffledMemoCardsCopy = [...shuffledMemoCards];
-        shuffledMemoCardsCopy.splice(memoCard.index, 1, flippedMemoCard);
-        setShuffledMemoCards(shuffledMemoCardsCopy);
+        let shuffledMemoCardsToSet = [...shuffledMemoCards];
+        shuffledMemoCardsToSet.splice(memoCard.index, 1, flippedMemoCard);
+        setShuffledMemoCards(shuffledMemoCardsToSet);
 
         if (selectedMemoCard == null) {
             setSelectedMemoCard(memoCard);
         }
+
         else if (selectedMemoCard.name === memoCard.name) {
             setCombo(combo + 1);
             const pointsPlusCombo = 100 + combo * 50;
@@ -67,18 +79,19 @@ function Board() {
             }
 
             setSelectedMemoCard(null);
-            const allFlipped = shuffledMemoCardsCopy.every(card => card.flipped);
+            const allFlipped = shuffledMemoCardsToSet.every(card => card.flipped);
             if (allFlipped) {
                 setGameOver(true);
             }
         }
+
         else {
             setCombo(0);
             setAnimating(true);
             setTimeout(() => {
-                shuffledMemoCardsCopy.splice(memoCard.index, 1, memoCard);
-                shuffledMemoCardsCopy.splice(selectedMemoCard.index, 1, selectedMemoCard);
-                setShuffledMemoCards(shuffledMemoCardsCopy);
+                shuffledMemoCardsToSet.splice(memoCard.index, 1, memoCard);
+                shuffledMemoCardsToSet.splice(selectedMemoCard.index, 1, selectedMemoCard);
+                setShuffledMemoCards(shuffledMemoCardsToSet);
                 setSelectedMemoCard(null);
                 setAnimating(false);
 
@@ -124,8 +137,8 @@ function Board() {
                         <p className="mb-0 fst-italic">( Combo: x{combo} )</p>
                     </div>
                     : <div className="score-multiplayer">
-                        <h3 className={playerTurn === 1 ? "turn-player" : ""}>Jugador 1: {player1Score}</h3>
-                        <h3 className={playerTurn === 2 ? "turn-player" : ""}>Jugador 2: {player2Score}</h3>
+                        <h3 className={playerTurn === 1 ? "turn-player player-one" : ""}>Jugador 1: {player1Score}</h3>
+                        <h3 className={playerTurn === 2 ? "turn-player player-two" : ""}>Jugador 2: {player2Score}</h3>
                     </div>}
             </div>
 

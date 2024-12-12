@@ -48,6 +48,7 @@
 
 .memo-card-back {
     background-color: #40b1a4;
+    background-image: linear-gradient(to bottom right, #51f672, #38b1cd);
     transform: rotateY(180deg);
     box-shadow: 5px 5px 10px 0 rgb(0 0 0 / 50%);
     display: flex;

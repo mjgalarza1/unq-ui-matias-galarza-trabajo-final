@@ -6,7 +6,7 @@
     padding: 0 3em;
     width: 100vw;
     height: 100vh;
-    background-image: url("../../../public/flock-of-flying-birds.svg");
+    background-image: url("/flock-of-flying-birds.svg");
     background-repeat: repeat-x;
     background-size: 80vh;
     background-position: bottom;

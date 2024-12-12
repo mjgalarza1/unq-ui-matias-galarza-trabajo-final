@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     text-shadow: 2px 2px 4px rgba(39, 47, 53, 0.8);
-    background-image: url("../../../public/flock-of-flying-birds.svg");
+    background-image: url("/flock-of-flying-birds.svg");
     background-repeat: repeat-x;
     background-size: 80vh;
     background-position: bottom;
